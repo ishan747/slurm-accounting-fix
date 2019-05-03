@@ -1,3 +1,6 @@
+# Problem
+Runaway jobs that have an end times of 0 which add up compute hours that are altering the accounting info within slurmDB which produces inaccurate accounting data. 
+
 # slurm-accounting-fix
 To fix jobs accumulating runtime infinitely because they do not have end times.
 
