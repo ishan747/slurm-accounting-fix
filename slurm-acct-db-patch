@@ -26,4 +26,4 @@ while read eachline; do
      echo updating job $jobid with time_end=$correct_end_time
      mysql -u root -D slurm_acct_db -e "UPDATE slurm_cluster_job_table SET time_end="$correct_end_time" WHERE id_job="$jobid";"
   fi
-done < "$1"
+done < "${1:-/dev/stdin}"
