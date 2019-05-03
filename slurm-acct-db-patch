@@ -19,11 +19,9 @@ while read eachline; do
        #echo ${BASH_REMATCH[1]}
        raw_job_id=`echo $jobid | cut -d '_' -f1`
        id_array_task=`echo $jobid | cut -d '_' -f2`
-       echo updating array job $raw_job_id '|' task $id_array_task time_end=$correct_end_time
        mysql -u root -D slurm_acct_db -e "UPDATE slurm_cluster_job_table SET time_end="$correct_end_time" WHERE id_array_job="$raw_job_id" && id_array_task="$id_array_task";"
        echo -e "\n"
   else
-     echo updating job $jobid with time_end=$correct_end_time
      mysql -u root -D slurm_acct_db -e "UPDATE slurm_cluster_job_table SET time_end="$correct_end_time" WHERE id_job="$jobid";"
   fi
 done < "${1:-/dev/stdin}"
